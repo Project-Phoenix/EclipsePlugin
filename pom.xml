@@ -2,11 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.phoenix</groupId>
+	<artifactId>EclipsePlugin</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
+
 	<properties>
 		<tycho-version>0.16.0</tycho-version>
 	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -18,13 +21,29 @@
 			</plugin>
 		</plugins>
 	</build>
+
 	<repositories>
-		<!-- configure p2 repository to resolve against -->
 		<repository>
 			<id>juno</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/juno/</url>
 		</repository>
+		<repository>
+			<id>phoenixNexus</id>
+			<url>http://meldanor.dyndns.org:8081/nexus/content/groups/public/</url>
+		</repository>
 	</repositories>
-	<artifactId>EclipsePlugin</artifactId>
+
+	<distributionManagement>
+		<repository>
+			<id>phoenixNexus</id>
+			<name>Internal Releases</name>
+			<url>http://meldanor.dyndns.org:8081/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>phoenixNexus</id>
+			<name>Internal Releases</name>
+			<url>http://meldanor.dyndns.org:8081/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
